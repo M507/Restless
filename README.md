@@ -18,3 +18,4 @@ Restless is a C2 that controls implants using ICMP-like packets. Restless implan
 
 ### Dependencies:
 - .NET Core
+
