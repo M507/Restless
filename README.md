@@ -3,7 +3,7 @@
 ### Disclaimer
 This Red-Team tool is used for educational purposes ONLY!
 
-### ?
+### What is Restless?
 Restless is a small in-memory implant using C#. It uses SharpPcap, which uses Npcap APIs internally. Npcap is a new standard library update to the old WinPcap library.  
 
 Restless is a C2 that controls implants using ICMP-like packets. Restless implant listens for specific ICMP-like packets and applies instructions given by Restless-CLI.py. Restless Controller/Server can task clients to execute pre-baked or arbitrary commands.
