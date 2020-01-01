@@ -1,5 +1,9 @@
 # Restless
 
+### Disclaimer
+This Red-Team tool is used for educational purposes ONLY!
+
+### What is Restless?
 Restless is a small in-memory implant using C#. It uses SharpPcap, which uses Npcap APIs internally. Npcap is a new standard library update to the old WinPcap library.  
 
 Restless is a C2 that controls implants using ICMP-like packets. Restless implant listens for specific ICMP-like packets and applies instructions given by Restless-CLI.py. Restless Controller/Server can task clients to execute pre-baked or arbitrary commands.
@@ -13,9 +17,10 @@ Restless is a C2 that controls implants using ICMP-like packets. Restless implan
 - Server supports Command 2 All bots. 
 - Client can execute arbitrary commands.
 - Client can be shared by all team members (No need for team server).
-- Restless’s Beacon payload is 19.0 KB without modifications.
+- Restless’s payload is 19.0 KB without modifications.
 - Integrated with [pwnboard](https://github.com/micahjmartin/pwnboard). 
 
 ### Dependencies:
 - .NET Core
+
 
