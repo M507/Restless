@@ -27,9 +27,9 @@ Restless implant = Client
 - Integrated with pwnboard. 
 
 ### Files:
-Config.py Where are the configuration parameters. (Have to be changed according to your system)
-pwnAgent.py is a stand-alone script that updates pwnboard.
-ips.conf Where all the targeted IPs should be placed.
+- Config.py Where are the configuration parameters. (Have to be changed according to your system)
+- pwnAgent.py is a stand-alone script that updates pwnboard.
+- ips.conf Where all the targeted IPs should be placed.
 
 ### Dependencies:
 - Dotnet core
