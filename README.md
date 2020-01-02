@@ -11,6 +11,7 @@ RestlessCLI is a C2 that controls Restless implants using ICMP-like packets. Res
 
 ### Definitions:
 RestlessCLI = Server
+
 Restless implant = Client
 
 ### Status
