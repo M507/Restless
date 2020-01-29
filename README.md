@@ -1,8 +1,9 @@
 
 # Restless
 
-### Disclaimer
-This Red-Team tool is used for educational purposes ONLY!
+### DISCLAIMERS
+The information contained in this blog post is for educational purposes ONLY! The author DOES NOT hold any responsibility for any misuse or damage of the information provided in blog posts, discussions, activities, or exercises. 
+
 
 ### What is Restless?
 Restless is a small in-memory implant using C#. It uses SharpPcap, which uses Npcap APIs internally. Npcap is a new standard library update to the old WinPcap library.  
