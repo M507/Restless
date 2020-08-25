@@ -2,7 +2,7 @@
 # Restless
 
 ### DISCLAIMERS
-The information contained in this blog post is for educational purposes ONLY! The author DOES NOT hold any responsibility for any misuse or damage of the information provided in blog posts, discussions, activities, or exercises. 
+The information contained in this repo is for educational purposes ONLY! The author DOES NOT hold any responsibility for any misuse or damage of the information provided here.
 
 #### This is a low hanging fruit for Red-Blue themed competitions.
 
