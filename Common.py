@@ -1,8 +1,7 @@
 """
 Common functions
 
-Author: M507
-Site: Mohad.red
+Author's website: Mohad.red
 """
 
 from Config import *
