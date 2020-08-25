@@ -4,6 +4,7 @@
 ### DISCLAIMERS
 The information contained in this blog post is for educational purposes ONLY! The author DOES NOT hold any responsibility for any misuse or damage of the information provided in blog posts, discussions, activities, or exercises. 
 
+#### This is a low hanging fruit for Red-Blue themed competitions.
 
 ### What is Restless?
 Restless is a small in-memory implant using C#. It uses SharpPcap, which uses Npcap APIs internally. Npcap is a new standard library update to the old WinPcap library.  
@@ -16,14 +17,13 @@ RestlessCLI = Server
 Restless implant = Client
 
 ### Status
-- Restless implants have been successfully tested on Windows7/10/12/16/19 and evaded detections on 10 :).
+- Restless implants have been tested on Windows7/10/12/16/19 and evaded detections on 10 :).
 - Restless implants bypass Windows Inbound firewall rules.
-- Server has a fully working CLI.
+- Server CLI.
 - Server sends encrypted messages, Caesar Cipher; it can be adjusted using the SHIFT parameter.
-- Server uses raw sockets to send customized ICMP-like packets as described below.
+- Server uses raw sockets to send customized ICMP-like packets.
 - Server supports Command 2 All bots. 
-- Client can execute arbitrary commands.
-- Client can be shared by all team members (No need for team server).
+- All clients can be shared by all the red team members (No need for team server).
 - The final payload is 20.0 KB without modifications.
 - Integrated with pwnboard. 
 
