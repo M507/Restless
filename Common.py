@@ -1,7 +1,7 @@
 """
 Common functions
 
-Author: Mohammed Alshehri
+Author: M507
 Site: Mohad.red
 """
 
