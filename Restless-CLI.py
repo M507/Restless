@@ -1,8 +1,7 @@
 """
 Restless CLI :)
 
-Author: Mohammed Alshehri
-Site: Mohad.red
+Author's website: Mohad.red
 """
 from Packets import *
 from Config import *
