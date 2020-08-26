@@ -45,25 +45,6 @@ class MyPrompt(Cmd):
     def help_exit(self):
         print('exit the application. Shorthand: x q Ctrl-D.')
 
-    def do_Add_ESXI_Admin(self, line):
-        line = line.split(' ')
-        ESXI_IP = line[0]
-        USERNAME = line[1]
-        STRONG_PASSWORD = line[2]
-        Description = line[3]
-        print(USERNAME, STRONG_PASSWORD, Description)
-        # Check each one of them - REGEX - Then pass them
-
-        # IF good to go:
-        # Add_ESXI_Admin 192.168.0.18 BLACK_TEAM Liverpool!1!1! Description1
-        #Execute_VMware_ESXI(ESXI_IP, 'Add_Admin', USERNAME, STRONG_PASSWORD, Description)
-
-    def help_Add_ESXI_Admin(self):
-        print("Add admin user.\n"
-              "Usage: Add_ESXI_Admin <ESXI_IP> <USERNAME> <STRONG_PASSWORD> <Description>\n"
-              "Add_ESXI_Admin 192.168.1.10 BLACK_TEAM Liverpool!1!1! Description1\n"
-              "Add_ESXI_Admin 192.168.1.10 ADMIN Liverpool!1998 Description2\n")
-
     def do_List(self, line):
         print("Bots:")
         for ip in listOfIPs:
