@@ -11,6 +11,8 @@ Restless is a small in-memory implant using C#. It uses SharpPcap, which uses Np
 
 RestlessCLI is a C2 that controls Restless implants using ICMP-like packets. Restless implant listens for specific ICMP-like packets and applies instructions given by Restless-CLI.py. Restless Controller/Server can task clients to execute pre-baked or arbitrary commands.
 
+![alt text](/poc.gif)
+
 ### Definitions:
 RestlessCLI = Server
 
