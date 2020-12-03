@@ -17,11 +17,9 @@ RestlessCLI is a C2 that controls Restless implants using ICMP-like packets. Res
 ### Status
 - Restless implants have been tested on Windows7/10/12/16/19 and evaded detections on 10 :).
 - Restless implants bypass Windows Inbound firewall rules.
-- Server CLI.
-- Server sends encrypted messages, Caesar Cipher; it can be adjusted using the SHIFT parameter.
+- Server sends "encrypted" messages, Caesar Cipher; it can be adjusted using the SHIFT parameter.
 - Server uses raw sockets to send customized ICMP-like packets.
-- Server supports Command 2 All bots. 
-- All clients can be shared by all the red team members (No need for team server).
+- The server's CLI supports Command 2 All bots. 
 - The final payload is 20.0 KB without modifications.
 - Integrated with pwnboard. 
 
