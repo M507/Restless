@@ -64,7 +64,10 @@ class MyPrompt(Cmd):
         COMMAND = line[1:]
         COMMAND = ' '.join(COMMAND)
         print(COMMAND)
-        SendIt(IP, COMMAND)
+        try:
+            SendIt(IP, COMMAND)
+        except:
+            print("Something bad happened! Try again")
         pass
 
     def help_Interact(self):

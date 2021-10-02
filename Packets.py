@@ -63,12 +63,12 @@ def create_packet(id, command):
     # Encrypt
     data = shift(data, SHIFT)
     # Calculate the checksum on the data and the dummy header.
-    my_checksum = checksum(header + data)
+    my_checksum = checksum(str(header) + str(data))
     # Now that we have the right checksum, we put that in. It's just easier
     # to make up a new header than to stuff it into the dummy.
     header = struct.pack('bbHHh', CHOSEN_TYPE, 0,
                          socket.htons(my_checksum), id, 1)
-    return header + data
+    return str(header) + str(data)
 
 """
 Sends one ping to the given "dest_addr" which can be an ip or hostname.
@@ -91,6 +91,7 @@ def do_one(dest_addr,command, timeout=1):
     # we have to make sure that our packet id is not greater than 65535.
     packet_id = int((id(timeout) * random.random()) % 65535)
     packet = create_packet(packet_id, command)
+    packet = bytes(packet, encoding='utf8')
     while packet:
         # The icmp protocol does not use a port, but the function
         # below expects it, so we can give it any port.
